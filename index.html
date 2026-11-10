@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UMBRA Tattoo Studio. Arte sobre la piel, diseño personalizado y turnos por WhatsApp.">
+  <meta name="theme-color" content="#0b0910">
+  <title>UMBRA — Tattoo Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0910;--surface:#13101a;--surface2:#1b1623;--text:#f5f1f8;
+      --muted:#aaa1b4;--line:rgba(255,255,255,.1);--purple:#a879e8;
+      --purple2:#c4a1ff;--deep:#69419a;--max:1160px;--radius:18px
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.65}
+    body.lock{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    img{display:block;max-width:100%}
+    .container{width:min(var(--max),calc(100% - 42px));margin:auto}
+    .grain{position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
+    .announcement{background:#21172d;border-bottom:1px solid rgba(168,121,232,.2);text-align:center;padding:8px 15px;color:#d8c3f3;font-size:11px;letter-spacing:1.4px;text-transform:uppercase}
+    header{position:sticky;top:0;z-index:30;background:rgba(11,9,16,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .logo{font-family:Manrope,sans-serif;font-weight:800;letter-spacing:4px;font-size:21px;display:flex;align-items:center;gap:10px}
+    .logo-mark{width:31px;height:31px;border:1px solid var(--purple);color:var(--purple2);display:grid;place-items:center;font-family:"Playfair Display";font-style:italic;font-size:20px;transform:rotate(45deg)}
+    .logo-mark span{transform:rotate(-45deg)}
+    .nav-links{display:flex;align-items:center;gap:29px;color:#c7bfce;font-size:13px}
+    .nav-links a{transition:color .2s}.nav-links a:hover{color:var(--purple2)}
+    .btn{border:1px solid transparent;border-radius:3px;padding:12px 19px;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:12px;letter-spacing:.7px;text-transform:uppercase;transition:.2s}
+    .btn-primary{background:var(--purple);color:#120d19}.btn-primary:hover{background:var(--purple2);transform:translateY(-2px)}
+    .btn-ghost{border-color:rgba(255,255,255,.24);color:var(--text);background:transparent}.btn-ghost:hover{border-color:var(--purple2);color:var(--purple2)}
+    .menu-btn{display:none;background:none;border:1px solid var(--line);color:white;padding:8px 11px;border-radius:3px}
+    .hero{min-height:660px;display:flex;align-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,9,16,.98) 0%,rgba(11,9,16,.82) 43%,rgba(11,9,16,.22) 100%),linear-gradient(0deg,rgba(11,9,16,.65),transparent 35%),url("https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=2000&q=90") center 42%/cover}
+    .hero-content{position:relative;padding:90px 0;max-width:660px}
+    .eyebrow{display:flex;align-items:center;gap:12px;color:var(--purple2);font-size:10px;font-weight:700;letter-spacing:2.8px;text-transform:uppercase;margin-bottom:22px}
+    .eyebrow:before{content:"";height:1px;width:32px;background:var(--purple)}
+    h1,h2,h3{font-family:Manrope,sans-serif;line-height:1.12}
+    h1{font-size:clamp(48px,7vw,86px);letter-spacing:-4px;font-weight:700}
+    h1 span{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;color:var(--purple2);letter-spacing:-2px}
+    .hero-copy{color:#c2bacb;max-width:480px;margin:24px 0 30px;font-size:15px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-foot{display:flex;gap:32px;margin-top:54px;color:#b6adbf;font-size:11px;letter-spacing:.5px}
+    .hero-foot strong{display:block;font-family:Manrope;color:#fff;font-size:18px;margin-bottom:2px}
+    section{padding:92px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:35px}
+    .section-head h2{font-size:clamp(32px,4.5vw,49px);letter-spacing:-2px}
+    .section-head p{max-width:420px;color:var(--muted);font-size:13px}
+    .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+    .intro-image{height:480px;position:relative}
+    .intro-image img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);border-radius:2px}
+    .intro-image:after{content:"";position:absolute;inset:15px -15px -15px 15px;border:1px solid rgba(168,121,232,.55);z-index:-1}
+    .intro-copy h2{font-size:clamp(34px,4vw,48px);letter-spacing:-2px;margin-bottom:22px}
+    .intro-copy h2 em{font-family:"Playfair Display";font-weight:500;color:var(--purple2)}
+    .intro-copy p{color:var(--muted);font-size:14px;margin-bottom:15px}
+    .signature{margin-top:28px;color:var(--purple2);font-family:"Playfair Display";font-style:italic;font-size:25px}
+    .work-section{background:#100d16;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:27px}
+    .filter{background:transparent;border:1px solid var(--line);color:#c8c0d0;padding:9px 15px;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+    .filter.active,.filter:hover{background:var(--purple);border-color:var(--purple);color:#130e19}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .piece{position:relative;overflow:hidden;background:var(--surface);min-height:310px;cursor:pointer}
+    .piece img{width:100%;height:100%;min-height:310px;object-fit:cover;filter:grayscale(100%);transition:transform .5s,filter .5s}
+    .piece:hover img{transform:scale(1.055);filter:grayscale(35%)}
+    .piece-overlay{position:absolute;inset:auto 0 0;padding:40px 18px 17px;background:linear-gradient(transparent,rgba(0,0,0,.88))}
+    .piece-overlay small{color:var(--purple2);font-size:9px;letter-spacing:2px;text-transform:uppercase}
+    .piece-overlay h3{font-size:18px;margin-top:4px}
+    .gallery-note{color:var(--muted);font-size:11px;margin-top:18px}
+    .styles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .style-card{padding:25px 20px;border:1px solid var(--line);background:var(--surface);min-height:180px;transition:.2s}
+    .style-card:hover{border-color:rgba(168,121,232,.6);transform:translateY(-3px)}
+    .style-number{font-family:"Playfair Display";font-style:italic;color:var(--purple2);font-size:25px}
+    .style-card h3{font-size:17px;margin:17px 0 8px}
+    .style-card p{color:var(--muted);font-size:12px}
+    .process{background:linear-gradient(130deg,#171020,#100d16 70%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+    .step{border-top:1px solid rgba(168,121,232,.5);padding-top:20px}
+    .step span{font-family:"Playfair Display";font-style:italic;color:var(--purple2);font-size:28px}
+    .step h3{font-size:18px;margin:13px 0 8px}
+    .step p{color:var(--muted);font-size:13px}
+    .booking{display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;align-items:start}
+    .booking-copy h2{font-size:clamp(35px,4.5vw,50px);letter-spacing:-2px;margin-bottom:18px}
+    .booking-copy p{color:var(--muted);font-size:14px;margin-bottom:23px}
+    .booking-info{display:grid;gap:13px;color:#c7bfce;font-size:12px}
+    .booking-info span{color:var(--purple2);margin-right:9px}
+    .booking-form{background:var(--surface);border:1px solid var(--line);padding:28px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .field{display:grid;gap:7px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:10px;color:#c9bfd2;letter-spacing:1px;text-transform:uppercase}
+    .field input,.field select,.field textarea{width:100%;background:#0d0a12;border:1px solid var(--line);border-radius:2px;padding:12px;color:white;outline:none;font-size:13px}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--purple)}
+    .field textarea{min-height:100px;resize:vertical}
+    .field select option{background:#130f19}
+    .booking-form .btn{width:100%;margin-top:18px}
+    .form-note{font-size:10px;color:#8e8599;margin-top:10px;text-align:center}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:11px}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+    .footer-links{display:flex;gap:20px}
+    .footer-links a:hover{color:var(--purple2)}
+    .whatsapp{position:fixed;right:22px;bottom:22px;width:52px;height:52px;border-radius:50%;background:#25d366;color:#06140b;display:grid;place-items:center;font-size:22px;z-index:25;box-shadow:0 8px 25px #0009}
+    .toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);background:#21172d;border:1px solid rgba(168,121,232,.4);color:white;padding:12px 18px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:60}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:900px){.intro-grid{gap:35px}.styles-grid{grid-template-columns:repeat(2,1fr)}.booking{gap:30px}.hero{min-height:590px}}
+    @media(max-width:650px){
+      .container{width:calc(100% - 30px)}.nav{height:66px}.nav-links{display:none;position:absolute;top:66px;left:0;right:0;padding:22px 20px;background:#100d16;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.nav-links.open{display:flex}.menu-btn{display:block}.nav>.btn{display:none}
+      .hero{min-height:620px}.hero-bg{background-position:58% center;background-image:linear-gradient(90deg,rgba(11,9,16,.96),rgba(11,9,16,.65)),linear-gradient(0deg,rgba(11,9,16,.7),transparent),url("https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=1000&q=85")}
+      .hero-content{padding:70px 0}h1{font-size:54px;letter-spacing:-3px}.hero-foot{gap:17px;flex-wrap:wrap;margin-top:40px}.hero-foot strong{font-size:16px}
+      section{padding:67px 0}.section-head{display:block}.section-head p{margin-top:14px}.intro-grid,.booking{grid-template-columns:1fr}.intro-image{height:350px;max-width:90%;margin:0 auto 20px}.gallery{grid-template-columns:1fr 1fr;gap:9px}.piece,.piece img{min-height:230px}.piece-overlay{padding:30px 12px 12px}.piece-overlay h3{font-size:15px}.styles-grid{grid-template-columns:1fr 1fr;gap:9px}.style-card{padding:18px 14px}.steps{grid-template-columns:1fr;gap:25px}.booking-form{padding:19px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-inner{align-items:flex-start;flex-direction:column}
+    }
+    @media(max-width:390px){h1{font-size:46px}.gallery{grid-template-columns:1fr}.piece,.piece img{min-height:290px}.styles-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="announcement">UMBRA TATTOO STUDIO <span style="color:var(--purple2)">·</span> Diseños personalizados · Turnos con cita previa</div>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#inicio"><span class="logo-mark"><span>U</span></span> UMBRA</a>
+      <nav class="nav-links" id="navLinks"><a href="#estudio">El estudio</a><a href="#trabajos">Trabajos</a><a href="#estilos">Estilos</a><a href="#turnos">Turnos</a></nav>
+      <a class="btn btn-primary" href="#turnos">Reservar consulta ↗</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-bg"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Arte que permanece</div>
+          <h1>Tu piel.<br>Tu historia.<br><span>Nuestra tinta.</span></h1>
+          <p class="hero-copy">Un espacio donde las ideas toman forma. Creamos tatuajes personalizados con atención al detalle, criterio artístico y una experiencia pensada para vos.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#trabajos">Explorar trabajos ↗</a><a class="btn btn-ghost" href="#turnos">Consultar un diseño</a></div>
+          <div class="hero-foot"><div><strong>01 / 01</strong>Diseño personalizado</div><div><strong>Con cita</strong>Atención dedicada</div><div><strong>Tu idea</strong>Hecha pieza única</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="estudio">
+      <div class="container intro-grid">
+        <div class="intro-image"><img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=1000&q=85" alt="Artista trabajando en un tatuaje"></div>
+        <div class="intro-copy"><div class="eyebrow">Conocé UMBRA</div><h2>No hacemos copias.<br><em>Interpretamos historias.</em></h2><p>En UMBRA creemos que cada tatuaje tiene que tener sentido para quien lo lleva. Por eso cada proyecto empieza con una conversación: escuchamos tu idea, exploramos referencias y trabajamos un diseño pensado especialmente para vos.</p><p>Cuidamos cada etapa del proceso, desde la primera consulta hasta las indicaciones de cuidado posteriores. Queremos que te sientas acompañado/a y seguro/a en todo momento.</p><div class="signature">Cada trazo, con intención.</div></div>
+      </div>
+    </section>
+
+    <section class="work-section" id="trabajos">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">Portfolio artístico</div><h2>Trabajos seleccionados</h2></div><p>Una muestra de estilos y composiciones. Cada pieza se adapta a la idea, anatomía y preferencias de cada persona.</p></div>
+        <div class="filters" id="filters">
+          <button class="filter active" data-filter="Todos">Todos</button>
+          <button class="filter" data-filter="Blackwork">Blackwork</button>
+          <button class="filter" data-filter="Fine line">Fine line</button>
+          <button class="filter" data-filter="Realismo">Realismo</button>
+          <button class="filter" data-filter="Ornamental">Ornamental</button>
+        </div>
+        <div class="gallery" id="gallery"></div>
+        <p class="gallery-note">Imágenes ilustrativas de demostración. Reemplazalas por fotografías de trabajos propios y autorizados antes de presentar el sitio a un estudio real.</p>
+      </div>
+    </section>
+
+    <section id="estilos">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">Encontrá tu lenguaje</div><h2>Distintos estilos. Una identidad.</h2></div><p>Si todavía no sabés qué estilo elegir, podemos conversar sobre tu idea y encontrar juntos la mejor dirección visual.</p></div>
+        <div class="styles-grid">
+          <article class="style-card"><span class="style-number">01</span><h3>Blackwork</h3><p>Contrastes marcados, sombras y composiciones de alto impacto.</p></article>
+          <article class="style-card"><span class="style-number">02</span><h3>Fine line</h3><p>Líneas delicadas, detalles sutiles y diseños minimalistas.</p></article>
+          <article class="style-card"><span class="style-number">03</span><h3>Realismo</h3><p>Texturas, profundidad y atención minuciosa a cada detalle.</p></article>
+          <article class="style-card"><span class="style-number">04</span><h3>Ornamental</h3><p>Patrones, geometría y formas que acompañan el cuerpo.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">Cómo trabajamos</div><h2>De la idea a la piel.</h2></div><p>Un proceso claro para que sepas qué esperar y puedas preparar tu sesión con tranquilidad.</p></div>
+        <div class="steps">
+          <article class="step"><span>01</span><h3>Nos contás tu idea</h3><p>Completás el formulario con referencias, zona del cuerpo y estilo que te interesa.</p></article>
+          <article class="step"><span>02</span><h3>Diseñamos juntos</h3><p>Conversamos los detalles, dimensiones aproximadas y posibilidades del diseño.</p></article>
+          <article class="step"><span>03</span><h3>Coordinamos tu sesión</h3><p>Confirmamos disponibilidad, presupuesto y cuidados previos a la cita.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="turnos">
+      <div class="container booking">
+        <div class="booking-copy"><div class="eyebrow">Empezá tu proyecto</div><h2>¿Tenés una idea dando vueltas?</h2><p>Contanos qué te gustaría tatuarte. Tu consulta nos ayuda a entender el proyecto y orientarte sobre los próximos pasos.</p><div class="booking-info"><div><span>✦</span> Consultas personalizadas</div><div><span>✦</span> Presupuesto según diseño y tamaño</div><div><span>✦</span> Turnos coordinados previamente</div></div></div>
+        <form class="booking-form" id="bookingForm">
+          <div class="form-grid">
+            <div class="field"><label for="name">Tu nombre</label><input id="name" name="name" required placeholder="Cómo te llamás"></div>
+            <div class="field"><label for="contact">Tu contacto</label><input id="contact" name="contact" required placeholder="Teléfono o Instagram"></div>
+            <div class="field"><label for="style">Estilo de tatuaje</label><select id="style" name="style" required><option value="">Seleccionar</option><option>Blackwork</option><option>Fine line</option><option>Realismo</option><option>Ornamental</option><option>No estoy seguro/a</option></select></div>
+            <div class="field"><label for="zone">Zona del cuerpo</label><input id="zone" name="zone" placeholder="Ej. antebrazo, espalda..."></div>
+            <div class="field full"><label for="idea">Contanos tu idea</label><textarea id="idea" name="idea" required placeholder="Tamaño aproximado, referencias, significado o cualquier detalle..."></textarea></div>
+          </div>
+          <button class="btn btn-primary" type="submit">Enviar consulta por WhatsApp ↗</button>
+          <p class="form-note">Se abrirá WhatsApp con tu consulta preparada. No se envía ningún dato automáticamente.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><a class="logo" href="#inicio"><span class="logo-mark"><span>U</span></span> UMBRA</a><span>© <span id="year"></span> UMBRA Tattoo Studio · Sitio de demostración</span><div class="footer-links"><a href="#trabajos">Portfolio</a><a href="#turnos">Consultas</a><a href="#inicio">Volver arriba ↑</a></div></div></footer>
+  <a class="whatsapp" id="whatsappFloat" href="#" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">✆</a>
+  <div class="toast" id="toast" role="status">Completá los campos obligatorios para continuar.</div>
+
+  <script>
+    // PERSONALIZACIÓN: reemplazá el número por el WhatsApp real del estudio, con código de país y área, sin + ni espacios.
+    const CONFIG = { whatsapp: "549XXXXXXXXXX", studioName: "UMBRA Tattoo Studio" };
+
+    // Fotografías ilustrativas. Para un cliente real, usar fotos propias o con licencia adecuada.
+    const pieces = [
+      {title:"Composición botánica",style:"Fine line",image:"https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?auto=format&fit=crop&w=900&q=85"},
+      {title:"Blackwork ornamental",style:"Blackwork",image:"https://images.unsplash.com/photo-1590246814883-57c511e5f8c1?auto=format&fit=crop&w=900&q=85"},
+      {title:"Retrato y sombras",style:"Realismo",image:"https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=900&q=85"},
+      {title:"Geometría sutil",style:"Ornamental",image:"https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&w=900&q=85"},
+      {title:"Línea y movimiento",style:"Fine line",image:"https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=900&q=85"},
+      {title:"Tinta en contraste",style:"Blackwork",image:"https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?auto=format&fit=crop&w=900&q=85"}
+    ];
+
+    const gallery = document.getElementById("gallery");
+    function renderGallery(filter="Todos"){
+      const list=filter==="Todos"?pieces:pieces.filter(piece=>piece.style===filter);
+      gallery.innerHTML=list.map(piece=>`
+        <article class="piece">
+          <img src="${piece.image}" alt="${piece.title}" loading="lazy">
+          <div class="piece-overlay"><small>${piece.style}</small><h3>${piece.title}</h3></div>
+        </article>`).join("");
+    }
+    document.getElementById("filters").addEventListener("click",event=>{
+      const button=event.target.closest("[data-filter]");if(!button)return;
+      document.querySelectorAll(".filter").forEach(item=>item.classList.remove("active"));
+      button.classList.add("active");renderGallery(button.dataset.filter);
+    });
+    const makeWhatsApp=(message)=>`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(message)}`;
+    document.getElementById("whatsappFloat").href=makeWhatsApp("Hola, quisiera consultar por un tatuaje en UMBRA.");
+    document.getElementById("bookingForm").addEventListener("submit",event=>{
+      event.preventDefault();
+      const form=new FormData(event.currentTarget);
+      const message=[
+        `Hola, quiero consultar por un tatuaje en ${CONFIG.studioName}.`,
+        `Nombre: ${form.get("name")}`,
+        `Contacto: ${form.get("contact")}`,
+        `Estilo: ${form.get("style")}`,
+        `Zona del cuerpo: ${form.get("zone")||"A definir"}`,
+        `Idea: ${form.get("idea")}`
+      ].join("\n");
+      if(CONFIG.whatsapp.includes("X")){
+        const toast=document.getElementById("toast");toast.textContent="Antes de usar el formulario, configurá el número de WhatsApp del estudio en el código.";toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),4000);return;
+      }
+      window.open(makeWhatsApp(message),"_blank","noopener");
+    });
+    document.getElementById("year").textContent=new Date().getFullYear();
+    const nav=document.getElementById("navLinks");
+    document.getElementById("menuBtn").addEventListener("click",()=>nav.classList.toggle("open"));
+    nav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>nav.classList.remove("open")));
+    renderGallery();
+  </script>
+</body>
+</html>
